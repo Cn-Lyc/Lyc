@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.SplittableRandom;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -39,8 +40,6 @@ public class NewsActivity extends AppCompatActivity {
     }
 
 
-
-
     private void initView() {
         newsLv = findViewById(R.id.news_list);
         rowsDTOList = new ArrayList<>();
@@ -48,11 +47,17 @@ public class NewsActivity extends AppCompatActivity {
         newsLv.setAdapter(newsAdapter);
 
         Intent intent = getIntent();
-        String title = intent.getStringExtra("title");
-        String content = intent.getStringExtra("content");
-        String imgUrl = intent.getStringExtra("imgUrl");
+        ArrayList<String> title = intent.getStringArrayListExtra("title");
+        ArrayList<String> content = intent.getStringArrayListExtra("content");
+        ArrayList<String> imgUrl = intent.getStringArrayListExtra("imgUrl");
 
-        rowsDTOList.add(new ZhaunTiNewsBean.RowsDTO(title, content, imgUrl));
+        for (int i = 0; i < title.size(); i++) {
+            String title1 = title.get(i);
+            String content1 = content.get(i);
+            String imgUrl1 = imgUrl.get(i);
+            rowsDTOList.add(new ZhaunTiNewsBean.RowsDTO(title1, content1, imgUrl1));
+        }
+
 
     }
 }

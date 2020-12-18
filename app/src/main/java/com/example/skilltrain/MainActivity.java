@@ -2,7 +2,9 @@ package com.example.skilltrain;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,13 +34,16 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     String title, content, imgUrl;
+    ArrayList title1 = new ArrayList();
+    ArrayList content1 = new ArrayList();
+    ArrayList imgUrl1 = new ArrayList();
     Button searchBtn;
     EditText newsEt;
-    TextView newsTitle, newsContent;
     List images = new ArrayList();
     String search;
     Banner banner;
     GridLayout gridLayout;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,14 @@ public class MainActivity extends AppCompatActivity {
 
         initBannerImg();
 
+        checkPad(MainActivity.this);
 
+
+    }
+
+    //判断是不是ipad
+    private Boolean checkPad(Context context) {
+        return (context.getResources().getConfiguration().screenLayout & Configuration.COLOR_MODE_HDR_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     //初始化banner里的图片
@@ -75,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         searchBtn = findViewById(R.id.searchBtn);
         newsEt = findViewById(R.id.newsEt);
         banner = findViewById(R.id.ad_banner);
-        gridLayout=findViewById(R.id.tubiao_grid);
+        gridLayout = findViewById(R.id.tubiao_grid);
     }
 
     //解析Token的数据来拿到Token
@@ -98,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
     //发送请求Token的网络请求
     public void initTokenData() {
+
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("username", "lyc");
@@ -131,6 +144,9 @@ public class MainActivity extends AppCompatActivity {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                title1.clear();
+                content1.clear();
+                imgUrl1.clear();
                 search = newsEt.getText().toString();
                 for (ZhaunTiNewsBean.RowsDTO rowsDTO : rowsDTOList) {
                     title = rowsDTO.getTitle();
@@ -143,16 +159,16 @@ public class MainActivity extends AppCompatActivity {
                      *  */
                     if (title.contains(search) || content.contains(search)) {
                         //传递数据给新闻显示界面
-                        Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-                        intent.putExtra("title", title);
-                        intent.putExtra("content", content);
-                        intent.putExtra("imgUrl", imgUrl);
-                        startActivity(intent);
-                        break;
+                        title1.add(title);
+                        content1.add(content);
+                        imgUrl1.add(imgUrl);
+                        intent = new Intent(MainActivity.this, NewsActivity.class);
+                        intent.putStringArrayListExtra("title", title1);
+                        intent.putStringArrayListExtra("content", content1);
+                        intent.putStringArrayListExtra("imgUrl", imgUrl1);
                     }
-
                 }
-
+                startActivity(intent);
             }
         });
 
