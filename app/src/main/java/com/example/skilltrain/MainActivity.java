@@ -63,9 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //判断是不是ipad
-    private Boolean checkPad(Context context) {
-        return (context.getResources().getConfiguration().screenLayout & Configuration.COLOR_MODE_HDR_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    //    判断是不是ipad
+    private void checkPad(Context context) {
+        if ((context.getResources().getConfiguration().screenLayout
+                & Configuration.COLOR_MODE_HDR_MASK)
+                > Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            gridLayout.setColumnCount(6);
+        } else {
+            gridLayout.setColumnCount(5);
+        }
     }
 
     //初始化banner里的图片
@@ -102,10 +108,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-//        Gson gson=new Gson();
-//        Bean bean=gson.fromJson(json,TokenBean.class);
-//        String token=bean.getToken();
-//        Log.d("TAG", "令牌Gson: "+token);
+
     }
 
     //发送请求Token的网络请求
@@ -144,10 +147,12 @@ public class MainActivity extends AppCompatActivity {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //这边加三个清空数组,将前一次保存的数据给清空
                 title1.clear();
                 content1.clear();
                 imgUrl1.clear();
                 search = newsEt.getText().toString();
+
                 for (ZhaunTiNewsBean.RowsDTO rowsDTO : rowsDTOList) {
                     title = rowsDTO.getTitle();
                     content = rowsDTO.getContent();
@@ -158,11 +163,12 @@ public class MainActivity extends AppCompatActivity {
                      *  应该是用完整的来匹配不完整的
                      *  */
                     if (title.contains(search) || content.contains(search)) {
-                        //传递数据给新闻显示界面
+                        //传递数据列表给新闻显示界面
                         title1.add(title);
                         content1.add(content);
                         imgUrl1.add(imgUrl);
                         intent = new Intent(MainActivity.this, NewsActivity.class);
+                        //这边要传一个列表数据过去，因为有可能有多个新闻
                         intent.putStringArrayListExtra("title", title1);
                         intent.putStringArrayListExtra("content", content1);
                         intent.putStringArrayListExtra("imgUrl", imgUrl1);

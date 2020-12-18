@@ -51,6 +51,7 @@ public class NewsActivity extends AppCompatActivity {
         ArrayList<String> content = intent.getStringArrayListExtra("content");
         ArrayList<String> imgUrl = intent.getStringArrayListExtra("imgUrl");
 
+        //因为获取到的title、content、url都是一组的，所以他们的数组长度是一样的
         for (int i = 0; i < title.size(); i++) {
             String title1 = title.get(i);
             String content1 = content.get(i);
