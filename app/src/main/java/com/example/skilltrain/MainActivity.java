@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.example.skilltrain.bean.ZhaunTiNewsBean;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     List images = new ArrayList();
     String search;
     Banner banner;
+    GridLayout gridLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         searchBtn = findViewById(R.id.searchBtn);
         newsEt = findViewById(R.id.newsEt);
         banner = findViewById(R.id.ad_banner);
+        gridLayout=findViewById(R.id.tubiao_grid);
     }
 
     //解析Token的数据来拿到Token
