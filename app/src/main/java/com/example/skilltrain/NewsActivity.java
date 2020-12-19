@@ -35,7 +35,6 @@ public class NewsActivity extends AppCompatActivity {
 
         initView();
 
-        //  initData();
 
     }
 

@@ -46,7 +46,7 @@ public class NewsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = LayoutInflater.from(context).inflate(R.layout.news_item, null);
+        view = LayoutInflater.from(context).inflate(R.layout.news_item,null);
         TextView titleTv = view.findViewById(R.id.news_title);
         TextView contentTv = view.findViewById(R.id.news_content);
         ImageView ivPic = view.findViewById(R.id.news_img);
