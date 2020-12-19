@@ -11,8 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.TextView;
 
+import com.example.skilltrain.adapter.TuBiaoAdapter;
+import com.example.skilltrain.bean.TuBiaoBean;
 import com.example.skilltrain.bean.ZhaunTiNewsBean;
 import com.example.skilltrain.util.GlideImgUtil;
 import com.example.skilltrain.util.HttpUtil;
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList title1 = new ArrayList();
     ArrayList content1 = new ArrayList();
     ArrayList imgUrl1 = new ArrayList();
+    List<TuBiaoBean> tuBiaoBeanList;
+    TuBiaoAdapter tuBiaoAdapter;
+    GridView gridView;
     Button searchBtn;
     EditText newsEt;
     List images = new ArrayList();
@@ -60,6 +66,25 @@ public class MainActivity extends AppCompatActivity {
 
         checkPad(MainActivity.this);
 
+        initTuBiao();
+
+
+
+    }
+
+    private void initTuBiao() {
+        tuBiaoBeanList = new ArrayList<>();
+        tuBiaoAdapter = new TuBiaoAdapter(this, tuBiaoBeanList);
+        gridView.setAdapter(tuBiaoAdapter);
+
+        tuBiaoBeanList.add(new TuBiaoBean("城市地铁", R.drawable.ditie));
+        tuBiaoBeanList.add(new TuBiaoBean("智慧巴士", R.drawable.bus));
+        tuBiaoBeanList.add(new TuBiaoBean("门诊预约", R.drawable.menzheng));
+        tuBiaoBeanList.add(new TuBiaoBean("生活缴费", R.drawable.live));
+        tuBiaoBeanList.add(new TuBiaoBean("违章查询", R.drawable.weizhang));
+        tuBiaoBeanList.add(new TuBiaoBean("停车场", R.drawable.pack));
+        tuBiaoBeanList.add(new TuBiaoBean("更多服务", R.drawable.menzheng));
+
 
     }
 
@@ -68,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
         if ((context.getResources().getConfiguration().screenLayout
                 & Configuration.COLOR_MODE_HDR_MASK)
                 > Configuration.SCREENLAYOUT_SIZE_LARGE) {
-            gridLayout.setColumnCount(6);
+            gridView.setNumColumns(6);
         } else {
-            gridLayout.setColumnCount(5);
+            gridView.setNumColumns(5);
         }
     }
 
@@ -93,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         searchBtn = findViewById(R.id.searchBtn);
         newsEt = findViewById(R.id.newsEt);
         banner = findViewById(R.id.ad_banner);
-        gridLayout = findViewById(R.id.tubiao_grid);
+        gridView = findViewById(R.id.tubiao_gv);
     }
 
     //解析Token的数据来拿到Token
