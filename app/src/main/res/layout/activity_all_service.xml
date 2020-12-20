@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#d3d3d3"
     android:layout_height="match_parent"
-    tools:context=".NewsFragment">
+    tools:context=".AllServiceFragment">
 
-    <ListView
+    <GridView
+        android:id="@+id/allService_gv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/news_list"/>
+        android:numColumns="5" />
 
 </LinearLayout>
