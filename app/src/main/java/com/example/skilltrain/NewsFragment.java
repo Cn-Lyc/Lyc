@@ -45,6 +45,8 @@ public class NewsFragment extends Fragment {
     public void onStart() {
         super.onStart();
         initView();
+        initNewsData();
+
     }
 
     private void initView() {
@@ -52,7 +54,6 @@ public class NewsFragment extends Fragment {
         rowsDTOList = new ArrayList<>();
         newsAdapter = new NewsAdapter(getActivity(), rowsDTOList);
         newsLv.setAdapter(newsAdapter);
-        initNewsData();
 //        Intent intent = getActivity().getIntent();
 //        ArrayList<String> title = intent.getStringArrayListExtra("title");
 //        ArrayList<String> content = intent.getStringArrayListExtra("content");
@@ -74,7 +75,9 @@ public class NewsFragment extends Fragment {
 
         List<ZhaunTiNewsBean.RowsDTO> rowsDTOList1 = zhaunTiNewsBean.getRows();
 
-        for (int i=0;i<rowsDTOList1.size();i++) {
+        rowsDTOList.clear();
+
+        for (int i = 0; i < rowsDTOList1.size(); i++) {
             String title = rowsDTOList1.get(i).getTitle();
             String content = rowsDTOList1.get(i).getContent();
             String imgUrl = " http://dasai.sdvcst.edu.cn:8080" + rowsDTOList1.get(i).getImgUrl();

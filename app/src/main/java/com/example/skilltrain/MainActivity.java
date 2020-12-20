@@ -1,6 +1,7 @@
 package com.example.skilltrain;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
@@ -50,13 +51,21 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     public static final int PAGE_FOUR = 3;
     public static final int PAGE_FIVE = 4;
     MainAdapter mainAdapter;
+    private List<Fragment> fragmentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //这句话总是忘写
-        mainAdapter = new MainAdapter(getSupportFragmentManager());
+        fragmentList = new ArrayList<>();
+        fragmentList.add(new MainFragment());
+        fragmentList.add(new AllServiceFragment());
+        fragmentList.add(new HuanBaoFragment());
+        fragmentList.add(new NewsFragment());
+        fragmentList.add(new ZhongXinFragment());
+        mainAdapter = new MainAdapter(getSupportFragmentManager(), fragmentList);
         initView();
         shouyeRb.setChecked(true);
     }

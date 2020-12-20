@@ -14,54 +14,75 @@ import com.example.skilltrain.StartFragment1;
 import com.example.skilltrain.StartFragment2;
 import com.example.skilltrain.ZhongXinFragment;
 
+import java.util.List;
+
 public class MainAdapter extends FragmentPagerAdapter {
+    List<Fragment> fragmentList;
 
-    final int PAGER_COUNT = 5;
-    MainFragment mainFragment = null;
-    NewsFragment newsFragment = null;
-    AllServiceFragment allServiceFragment = null;
-    HuanBaoFragment huanBaoFragment = null;
-    ZhongXinFragment zhongXinFragment = null;
 
-    public MainAdapter(@NonNull FragmentManager fm) {
-        super(fm);
-        mainFragment = new MainFragment();
-        newsFragment = new NewsFragment();
-        allServiceFragment = new AllServiceFragment();
-        huanBaoFragment = new HuanBaoFragment();
-        zhongXinFragment = new ZhongXinFragment();
+
+    public MainAdapter(FragmentManager fragmentManager, List<Fragment> fragmentList){
+        super(fragmentManager);
+        this.fragmentList = fragmentList;
     }
-
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = null;
-        switch (position) {
-            case MainActivity.PAGE_ONE:
-                fragment = mainFragment;
-                break;
-            case MainActivity.PAGE_TWO:
-                fragment = allServiceFragment;
-                break;
-            case MainActivity.PAGE_THREE:
-                fragment = huanBaoFragment;
-                break;
-            case MainActivity.PAGE_FOUR:
-                fragment = newsFragment;
-                break;
-            case MainActivity.PAGE_FIVE:
-                fragment = zhongXinFragment;
-                break;
-
-        }
-
-
-        return fragment;
+        return fragmentList.get(position);
     }
 
     @Override
     public int getCount() {
-        return PAGER_COUNT;
+        return fragmentList.size();
     }
+
+
+//    final int PAGER_COUNT = 5;
+//    MainFragment mainFragment = null;
+//    NewsFragment newsFragment = null;
+//    AllServiceFragment allServiceFragment = null;
+//    HuanBaoFragment huanBaoFragment = null;
+//    ZhongXinFragment zhongXinFragment = null;
+//
+//    public MainAdapter(@NonNull FragmentManager fm) {
+//        super(fm);
+//        mainFragment = new MainFragment();
+//        newsFragment = new NewsFragment();
+//        allServiceFragment = new AllServiceFragment();
+//        huanBaoFragment = new HuanBaoFragment();
+//        zhongXinFragment = new ZhongXinFragment();
+//    }
+//
+//
+//    @NonNull
+//    @Override
+//    public Fragment getItem(int position) {
+//        Fragment fragment = null;
+//        switch (position) {
+//            case MainActivity.PAGE_ONE:
+//                fragment = mainFragment;
+//                break;
+//            case MainActivity.PAGE_TWO:
+//                fragment = allServiceFragment;
+//                break;
+//            case MainActivity.PAGE_THREE:
+//                fragment = huanBaoFragment;
+//                break;
+//            case MainActivity.PAGE_FOUR:
+//                fragment = newsFragment;
+//                break;
+//            case MainActivity.PAGE_FIVE:
+//                fragment = zhongXinFragment;
+//                break;
+//
+//        }
+//
+//        return fragment;
+//    }
+//
+//    @Override
+//    public int getCount() {
+//        return PAGER_COUNT;
+//    }
 }

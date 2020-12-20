@@ -67,12 +67,12 @@ public class AllServiceFragment extends Fragment {
             Log.d("TAG", "getTuBiaoJson: " + url);
             rowsDTOList.add(new AllTuBiaoBean.RowsDTO(name, url));
         }
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                allTuBiaoAdapter.notifyDataSetChanged();
-            }
-        });
+//        getActivity().runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                allTuBiaoAdapter.notifyDataSetChanged();
+//            }
+//        });
     }
 
     private void initTuBiaoData() {
