@@ -33,7 +33,7 @@ import okhttp3.Response;
 
 public class NewsFragment extends Fragment {
     List<ZhaunTiNewsBean.RowsDTO> rowsDTOList;
-    NewsAdapter2 newsAdapter2;
+    NewsAdapter newsAdapter;
     ListView newsLv;
 
     @Nullable
@@ -53,8 +53,8 @@ public class NewsFragment extends Fragment {
     private void initView() {
         newsLv = getActivity().findViewById(R.id.news_listfg);
         rowsDTOList = new ArrayList<>();
-        newsAdapter2 = new NewsAdapter2(getActivity(), rowsDTOList);
-        newsLv.setAdapter(newsAdapter2);
+        newsAdapter = new NewsAdapter(getActivity(), rowsDTOList);
+        newsLv.setAdapter(newsAdapter);
 //        Intent intent = getActivity().getIntent();
 //        ArrayList<String> title = intent.getStringArrayListExtra("title");
 //        ArrayList<String> content = intent.getStringArrayListExtra("content");
@@ -87,7 +87,7 @@ public class NewsFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                newsLv.setAdapter(newsAdapter2);
+                newsLv.setAdapter(newsAdapter);
             }
         });
     }

@@ -20,9 +20,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import com.example.skilltrain.adapter.MainAdapter;
+import com.example.skilltrain.adapter.NewsAdapter2;
 import com.example.skilltrain.adapter.TuBiaoAdapter;
+import com.example.skilltrain.bean.MainNewsBean;
 import com.example.skilltrain.bean.TuBiaoBean;
 import com.example.skilltrain.bean.ZhaunTiNewsBean;
 import com.example.skilltrain.util.GlideImgUtil;
@@ -55,8 +58,10 @@ public class MainFragment extends Fragment {
     List images = new ArrayList();
     String search;
     Banner banner;
-    GridLayout gridLayout;
     Intent intent;
+    List<MainNewsBean.RowsDTO> rowsDTOList;
+    NewsAdapter2 newsAdapter2;
+    ListView mainNewsLv;
 
     @Nullable
     @Override
@@ -82,8 +87,11 @@ public class MainFragment extends Fragment {
 
         gridViewClick();
 
+        initMainNewsData();
+
     }
 
+    //网格图标里的点击事件
     private void gridViewClick() {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -121,7 +129,7 @@ public class MainFragment extends Fragment {
         });
     }
 
-
+    //初始化图标
     private void initTuBiao() {
         tuBiaoBeanList = new ArrayList<>();
         tuBiaoAdapter = new TuBiaoAdapter(getActivity(), tuBiaoBeanList);
@@ -169,6 +177,13 @@ public class MainFragment extends Fragment {
         newsEt = getActivity().findViewById(R.id.newsEt);
         banner = getActivity().findViewById(R.id.ad_banner);
         gridView = getActivity().findViewById(R.id.tubiao_gv);
+        mainNewsLv = getActivity().findViewById(R.id.main_news_lv);
+
+        rowsDTOList = new ArrayList<>();
+        newsAdapter2 = new NewsAdapter2(getActivity(), rowsDTOList);
+        mainNewsLv.setAdapter(newsAdapter2);
+
+
     }
 
     //解析Token的数据来拿到Token
@@ -270,6 +285,48 @@ public class MainFragment extends Fragment {
             }
         });
 
+    }
+
+    //
+    public void getMainNewsData(String json) {
+        MainNewsBean mainNewsBean = new Gson().fromJson(json, MainNewsBean.class);
+        List<MainNewsBean.RowsDTO> rowsDTOList1 = mainNewsBean.getRows();
+
+        for (int i = 0; i < rowsDTOList1.size(); i++) {
+            String title = rowsDTOList1.get(i).getTitle();
+            String content = rowsDTOList1.get(i).getContent();
+            String url = "http://dasai.sdvcst.edu.cn:8080" + rowsDTOList1.get(i).getImgUrl();
+            String createTime = rowsDTOList1.get(i).getCreateTime();
+            String likeNum = rowsDTOList1.get(i).getLikeNumber();
+            String category = rowsDTOList1.get(i).getPressCategory();
+            String viewNum = rowsDTOList1.get(i).getViewsNumber();
+
+            rowsDTOList.add(new MainNewsBean.RowsDTO(title, content, url, createTime, likeNum, category, viewNum));
+
+        }
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mainNewsLv.setAdapter(newsAdapter2);
+            }
+        });
+
+    }
+
+    //发送主页新闻专栏
+    public void initMainNewsData() {
+        HttpUtil.Get("http://dasai.sdvcst.edu.cn:8080/press/press/list?pageNum=1&pageSize=10&pressCategory=37", new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String responseData = response.body().string();
+                getMainNewsData(responseData);
+            }
+        });
 
     }
 

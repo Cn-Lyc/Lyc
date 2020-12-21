@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.skilltrain.R;
+import com.example.skilltrain.bean.MainNewsBean;
 import com.example.skilltrain.bean.ZhaunTiNewsBean;
 
 import java.io.InputStream;
@@ -19,11 +20,11 @@ import java.net.URL;
 import java.util.List;
 
 public class NewsAdapter2 extends BaseAdapter {
-    List<ZhaunTiNewsBean.RowsDTO> rowsDTOList;
+    List<MainNewsBean.RowsDTO> rowsDTOList;
     Context context;
 
 
-    public NewsAdapter2(Context context, List<ZhaunTiNewsBean.RowsDTO> rowsDTOList) {
+    public NewsAdapter2(Context context, List<MainNewsBean.RowsDTO> rowsDTOList) {
         this.rowsDTOList = rowsDTOList;
         this.context = context;
     }
@@ -46,13 +47,21 @@ public class NewsAdapter2 extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = LayoutInflater.from(context).inflate(R.layout.news_item2,null);
+        view = LayoutInflater.from(context).inflate(R.layout.news_item2, null);
         TextView titleTv = view.findViewById(R.id.news_title2);
         TextView contentTv = view.findViewById(R.id.news_content2);
+        TextView categoryTv = view.findViewById(R.id.news_category2);
+        TextView likeTv = view.findViewById(R.id.news_likenumber2);
+        TextView viewTv = view.findViewById(R.id.news_viewnumber2);
+        TextView timeTv = view.findViewById(R.id.news_createtime2);
         ImageView ivPic = view.findViewById(R.id.news_img2);
-        ZhaunTiNewsBean.RowsDTO rowsDTO = rowsDTOList.get(i);
+        MainNewsBean.RowsDTO rowsDTO = rowsDTOList.get(i);
         titleTv.setText(rowsDTO.getTitle());
         contentTv.setText(rowsDTO.getContent());
+        categoryTv.setText(rowsDTO.getPressCategory());
+        likeTv.setText(rowsDTO.getLikeNumber());
+        viewTv.setText(rowsDTO.getViewsNumber());
+        timeTv.setText(rowsDTO.getCreateTime());
         String pic_url = rowsDTO.getImgUrl();
         setPicBitmap(ivPic, pic_url);
         return view;
