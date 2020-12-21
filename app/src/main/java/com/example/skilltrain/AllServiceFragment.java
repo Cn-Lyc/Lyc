@@ -32,13 +32,14 @@ import okhttp3.Response;
 
 public class AllServiceFragment extends Fragment {
     GridView gridView;
-    List<AllTuBiaoBean.RowsDTO> rowsDTOList;
-    AllTuBiaoAdapter allTuBiaoAdapter;
+    List<TuBiaoBean> rowsDTOList;
+    TuBiaoAdapter allTuBiaoAdapter;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        
         return inflater.inflate(R.layout.activity_all_service, container, false);
     }
 
@@ -48,11 +49,23 @@ public class AllServiceFragment extends Fragment {
 
         gridView = getActivity().findViewById(R.id.allService_gv);
         rowsDTOList = new ArrayList<>();
-        allTuBiaoAdapter = new AllTuBiaoAdapter(getActivity(), rowsDTOList);
+        allTuBiaoAdapter = new TuBiaoAdapter(getActivity(), rowsDTOList);
         gridView.setAdapter(allTuBiaoAdapter);
+        rowsDTOList.add(new TuBiaoBean("城市地铁", R.drawable.ditie));
+        rowsDTOList.add(new TuBiaoBean("智慧巴士", R.drawable.bus));
+        rowsDTOList.add(new TuBiaoBean("门诊预约", R.drawable.menzheng));
+        rowsDTOList.add(new TuBiaoBean("生活缴费", R.drawable.live));
+        rowsDTOList.add(new TuBiaoBean("违章查询", R.drawable.weizhang));
+        rowsDTOList.add(new TuBiaoBean("停车场", R.drawable.pack));
 
+//        getActivity().runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                allTuBiaoAdapter.notifyDataSetChanged();
+//            }
+//        });
 
-        initTuBiaoData();
+        // initTuBiaoData();
     }
 
 
@@ -60,14 +73,8 @@ public class AllServiceFragment extends Fragment {
         AllTuBiaoBean allTuBiaoBean = new Gson().fromJson(json, AllTuBiaoBean.class);
         List<AllTuBiaoBean.RowsDTO> rowsDTOList1 = allTuBiaoBean.getRows();
 
-        //这边不能用列表遍历，只能用i++的循环
-        for (int i = 0; i < rowsDTOList1.size(); i++) {
-            String name = rowsDTOList1.get(i).getServiceName();
-            String url = rowsDTOList1.get(i).getImgUrl();
-            Log.d("TAG", "getTuBiaoJson: " + url);
-            rowsDTOList.add(new AllTuBiaoBean.RowsDTO(name, url));
-        }
-//        getActivity().runOnUiThread(new Runnable() {
+
+        //        getActivity().runOnUiThread(new Runnable() {
 //            @Override
 //            public void run() {
 //                allTuBiaoAdapter.notifyDataSetChanged();

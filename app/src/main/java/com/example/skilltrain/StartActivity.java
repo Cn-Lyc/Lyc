@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.example.skilltrain.adapter.StartFragmentAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,6 +43,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     ViewPager viewPager;
     //判断是否第一次进入的布尔型变量
     Boolean check = true;
+    List<Fragment> fragmentList;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +52,15 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
 
         //从SP中取数据
         check = getSharedPreferences("myinfo", 0).getBoolean("check", true);
+
+        fragmentList = new ArrayList<>();
+        fragmentList.add(new StartFragment1());
+        fragmentList.add(new StartFragment2());
+        fragmentList.add(new StartFragment3());
+        fragmentList.add(new StartFragment4());
+        fragmentList.add(new StartFragment5());
+        startFragmentAdapter = new StartFragmentAdapter(getSupportFragmentManager(), fragmentList);
+
 
         initView();
 
@@ -86,7 +98,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
 
         //viewpager的使用
         viewPager = findViewById(R.id.start_vp1);
-        startFragmentAdapter = new StartFragmentAdapter(getSupportFragmentManager());
+
+
         viewPager.setAdapter(startFragmentAdapter);
 
         /* 这个setcurrentitem这里用不到*/

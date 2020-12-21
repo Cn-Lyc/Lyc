@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.example.skilltrain.adapter.NewsAdapter;
+import com.example.skilltrain.adapter.NewsAdapter2;
 import com.example.skilltrain.bean.ZhaunTiNewsBean;
 import com.example.skilltrain.util.HttpUtil;
 import com.google.gson.Gson;
@@ -32,13 +33,13 @@ import okhttp3.Response;
 
 public class NewsFragment extends Fragment {
     List<ZhaunTiNewsBean.RowsDTO> rowsDTOList;
-    NewsAdapter newsAdapter;
+    NewsAdapter2 newsAdapter2;
     ListView newsLv;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_news, container, false);
+        return inflater.inflate(R.layout.news_fragment, container, false);
     }
 
     @Override
@@ -50,10 +51,10 @@ public class NewsFragment extends Fragment {
     }
 
     private void initView() {
-        newsLv = getActivity().findViewById(R.id.news_list);
+        newsLv = getActivity().findViewById(R.id.news_listfg);
         rowsDTOList = new ArrayList<>();
-        newsAdapter = new NewsAdapter(getActivity(), rowsDTOList);
-        newsLv.setAdapter(newsAdapter);
+        newsAdapter2 = new NewsAdapter2(getActivity(), rowsDTOList);
+        newsLv.setAdapter(newsAdapter2);
 //        Intent intent = getActivity().getIntent();
 //        ArrayList<String> title = intent.getStringArrayListExtra("title");
 //        ArrayList<String> content = intent.getStringArrayListExtra("content");
@@ -81,15 +82,19 @@ public class NewsFragment extends Fragment {
             String title = rowsDTOList1.get(i).getTitle();
             String content = rowsDTOList1.get(i).getContent();
             String imgUrl = " http://dasai.sdvcst.edu.cn:8080" + rowsDTOList1.get(i).getImgUrl();
-
             rowsDTOList.add(new ZhaunTiNewsBean.RowsDTO(title, content, imgUrl));
         }
-
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                newsLv.setAdapter(newsAdapter2);
+            }
+        });
     }
 
 
     public void initNewsData() {
-        HttpUtil.Get(" http://dasai.sdvcst.edu.cn:8080/press/press/list?pageNum=1&pageSize=10", new Callback() {
+        HttpUtil.Get("http://dasai.sdvcst.edu.cn:8080/press/press/list", new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
 

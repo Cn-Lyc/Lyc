@@ -1,5 +1,7 @@
 package com.example.skilltrain.adapter;
 
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -19,7 +21,10 @@ import java.util.List;
 public class MainAdapter extends FragmentPagerAdapter {
     List<Fragment> fragmentList;
 
-
+//    @Override
+//    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+//
+//    }
 
     public MainAdapter(FragmentManager fragmentManager, List<Fragment> fragmentList){
         super(fragmentManager);

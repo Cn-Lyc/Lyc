@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -58,16 +59,19 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //这句话总是忘写
         fragmentList = new ArrayList<>();
         fragmentList.add(new MainFragment());
         fragmentList.add(new AllServiceFragment());
         fragmentList.add(new HuanBaoFragment());
         fragmentList.add(new NewsFragment());
         fragmentList.add(new ZhongXinFragment());
+        //这句话总是忘写
         mainAdapter = new MainAdapter(getSupportFragmentManager(), fragmentList);
         initView();
+
         shouyeRb.setChecked(true);
+        shouyeRb.setBackgroundColor(Color.parseColor("#58B39D"));
+        viewPager.setOffscreenPageLimit(5);
     }
 
     private void initView() {
@@ -94,7 +98,45 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     @Override
     public void onPageSelected(int position) {
+        switch (position) {
+            case 0:
+                shouyeRb.setBackgroundColor(Color.parseColor("#58B39D"));
+                quanbuRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                huanbaoRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                xinwenRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                zhongxinRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                break;
+            case 1:
+                shouyeRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                quanbuRb.setBackgroundColor(Color.parseColor("#58B39D"));
+                huanbaoRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                xinwenRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                zhongxinRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                break;
+            case 2:
+                shouyeRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                quanbuRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                huanbaoRb.setBackgroundColor(Color.parseColor("#58B39D"));
+                xinwenRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                zhongxinRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                break;
 
+            case 3:
+                shouyeRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                quanbuRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                huanbaoRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                xinwenRb.setBackgroundColor(Color.parseColor("#58B39D"));
+                zhongxinRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                break;
+
+            case 4:
+                shouyeRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                quanbuRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                huanbaoRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                xinwenRb.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                zhongxinRb.setBackgroundColor(Color.parseColor("#58B39D"));
+                break;
+        }
     }
 
     @Override

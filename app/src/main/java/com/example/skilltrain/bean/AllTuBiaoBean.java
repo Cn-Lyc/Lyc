@@ -68,7 +68,7 @@ public class AllTuBiaoBean {
          * link : metro_query/index
          */
 
-        public RowsDTO(String serviceName, String imgUrl) {
+        public RowsDTO(String serviceName, int imgUrl) {
             this.serviceName = serviceName;
             this.imgUrl = imgUrl;
         }
@@ -85,7 +85,7 @@ public class AllTuBiaoBean {
         private String serviceName;
         private String serviceDesc;
         private String serviceType;
-        private String imgUrl;
+        private int imgUrl;
         private int pid;
         private int isRecommend;
         private String link;
@@ -178,11 +178,11 @@ public class AllTuBiaoBean {
             this.serviceType = serviceType;
         }
 
-        public String getImgUrl() {
+        public int getImgUrl() {
             return imgUrl;
         }
 
-        public void setImgUrl(String imgUrl) {
+        public void setImgUrl(int imgUrl) {
             this.imgUrl = imgUrl;
         }
 

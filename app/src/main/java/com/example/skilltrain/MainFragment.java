@@ -257,7 +257,7 @@ public class MainFragment extends Fragment {
 
     //发送请求新闻列表的网络请求
     public void initNewsData() {
-        HttpUtil.Get(" http://dasai.sdvcst.edu.cn:8080/press/press/list?pageNum=1&pageSize=10", new Callback() {
+        HttpUtil.Get("http://dasai.sdvcst.edu.cn:8080/press/press/list", new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
