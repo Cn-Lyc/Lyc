@@ -31,6 +31,8 @@ public class MainAdapter extends FragmentPagerAdapter {
         this.fragmentList = fragmentList;
     }
 
+
+
     @NonNull
     @Override
     public Fragment getItem(int position) {

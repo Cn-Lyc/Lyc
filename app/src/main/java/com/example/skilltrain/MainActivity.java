@@ -46,11 +46,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     ViewPager viewPager;
     RadioGroup mainRg;
     RadioButton shouyeRb, quanbuRb, huanbaoRb, xinwenRb, zhongxinRb;
-    public static final int PAGE_ONE = 0;
-    public static final int PAGE_TWO = 1;
-    public static final int PAGE_THREE = 2;
-    public static final int PAGE_FOUR = 3;
-    public static final int PAGE_FIVE = 4;
+
     MainAdapter mainAdapter;
     private List<Fragment> fragmentList;
 
@@ -68,11 +64,30 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         //这句话总是忘写
         mainAdapter = new MainAdapter(getSupportFragmentManager(), fragmentList);
         initView();
-
         shouyeRb.setChecked(true);
         shouyeRb.setBackgroundColor(Color.parseColor("#58B39D"));
-        viewPager.setOffscreenPageLimit(5);
+        viewPager.setOffscreenPageLimit(fragmentList.size());
+
+        Log.d("测试", "onCreate");
     }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        fragmentList = new ArrayList<>();
+//        fragmentList.add(new MainFragment());
+//        fragmentList.add(new AllServiceFragment());
+//        fragmentList.add(new HuanBaoFragment());
+//        fragmentList.add(new NewsFragment());
+//        fragmentList.add(new ZhongXinFragment());
+//        //这句话总是忘写
+//        mainAdapter = new MainAdapter(getSupportFragmentManager(), fragmentList);
+//        initView();
+//        shouyeRb.setChecked(true);
+//        shouyeRb.setBackgroundColor(Color.parseColor("#58B39D"));
+//        viewPager.setOffscreenPageLimit(fragmentList.size());
+//        Log.d("测试", "onStart");
+//    }
 
     private void initView() {
         viewPager = findViewById(R.id.main_vp);
@@ -87,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         viewPager.setAdapter(mainAdapter);
         viewPager.setCurrentItem(0);
         viewPager.addOnPageChangeListener(this);
-
     }
 
     //viewpage的滑动事件

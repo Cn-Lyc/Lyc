@@ -66,11 +66,15 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_main_fragment, container, false);
+
+        View view = inflater.inflate(R.layout.activity_main_fragment, container, false);
+
+        return view;
     }
 
     @Override
     public void onStart() {
+        Log.d("测试", "MainFragment的onStart()");
         super.onStart();
 
         initView();
@@ -113,7 +117,9 @@ public class MainFragment extends Fragment {
 
                         break;
                     case 5:
-
+                        Intent intent = new Intent(getActivity(), ParkingMainActiviiy.class);
+                        startActivity(intent);
+                        getActivity().finish();
                         break;
 
                     case 6:
@@ -132,6 +138,8 @@ public class MainFragment extends Fragment {
     //初始化图标
     private void initTuBiao() {
         tuBiaoBeanList = new ArrayList<>();
+        Log.d("当前Activity", getActivity().getLocalClassName());
+
         tuBiaoAdapter = new TuBiaoAdapter(getActivity(), tuBiaoBeanList);
         gridView.setAdapter(tuBiaoAdapter);
 
@@ -173,6 +181,7 @@ public class MainFragment extends Fragment {
 
 
     private void initView() {
+        Log.d("测试", "MainFragment取得的Activity:" + getActivity().getLocalClassName());
         searchBtn = getActivity().findViewById(R.id.searchBtn);
         newsEt = getActivity().findViewById(R.id.newsEt);
         banner = getActivity().findViewById(R.id.ad_banner);
@@ -307,7 +316,8 @@ public class MainFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mainNewsLv.setAdapter(newsAdapter2);
+                newsAdapter2.notifyDataSetChanged();
+
             }
         });
 

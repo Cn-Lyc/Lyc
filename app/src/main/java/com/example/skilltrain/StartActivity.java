@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
@@ -34,11 +36,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     String reg = "((25[0-5]|2[0-4]\\d|[0-1]?\\d\\d?)\\.){3}(25[0-5]|2[0-4]\\d|[0-1]?\\d\\d?)\\b";
 
     //几个代表页面的常量
-    public static final int PAGE_ONE = 0;
-    public static final int PAGE_TWO = 1;
-    public static final int PAGE_THREE = 2;
-    public static final int PAGE_FOUR = 3;
-    public static final int PAGE_FIVE = 4;
+
     StartFragmentAdapter startFragmentAdapter;
     ViewPager viewPager;
     //判断是否第一次进入的布尔型变量
@@ -79,6 +77,8 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }
     }
+
+
 
     private void initView() {
         huadong1 = findViewById(R.id.start_huadong1);
