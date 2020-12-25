@@ -30,6 +30,22 @@ public class HttpUtil {
 
     }
 
+
+    public static void PostHeader(String url, JSONObject jsonObject, String token, Callback callback) {
+
+        MediaType type = MediaType.parse("application/json;charset=utf-8");
+        RequestBody requestBody = RequestBody.create(type, "" + jsonObject.toString());
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .addHeader("Authorization", token)
+                .build();
+
+        client.newCall(request).enqueue(callback);
+    }
+
     //Get请求
     public static void Get(String url, Callback callback) {
         OkHttpClient client = new OkHttpClient();

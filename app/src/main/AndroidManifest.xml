@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SkillTrain">
-        <activity android:name=".ParkingHistoryActivity"></activity>
+        <activity android:name=".BusSpecialActivity3"></activity>
+        <activity android:name=".BusSpecialActivity2" />
+        <activity android:name=".BusSpecialActivity" />
+        <activity android:name=".BusInfoActivity" />
+        <activity android:name=".ZhongXinMainActivity" />
+        <activity android:name=".adapter.ZhongXinLoFragment" />
+        <activity android:name=".ParkingHistoryActivity" />
         <activity android:name=".ParkingXiangQingActivity" />
         <activity android:name=".ParkingMainActiviiy" />
         <activity android:name=".NewsActivity" />

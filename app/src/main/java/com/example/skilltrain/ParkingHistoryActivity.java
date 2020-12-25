@@ -194,7 +194,6 @@ public class ParkingHistoryActivity extends AppCompatActivity {
         });
     }
 
-
     public void initAlltHistoryData() {
         HttpUtil.Get("http://dasai.sdvcst.edu.cn:8080/userinfo/parkrecord/list", new Callback() {
             @Override

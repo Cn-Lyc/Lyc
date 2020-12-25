@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     RadioButton shouyeRb, quanbuRb, huanbaoRb, xinwenRb, zhongxinRb;
 
     MainAdapter mainAdapter;
-    private List<Fragment> fragmentList;
+    public static List<Fragment> fragmentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         fragmentList.add(new HuanBaoFragment());
         fragmentList.add(new NewsFragment());
         fragmentList.add(new ZhongXinFragment());
+
+
         //这句话总是忘写
         mainAdapter = new MainAdapter(getSupportFragmentManager(), fragmentList);
         initView();
@@ -71,23 +73,6 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         Log.d("测试", "onCreate");
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        fragmentList = new ArrayList<>();
-//        fragmentList.add(new MainFragment());
-//        fragmentList.add(new AllServiceFragment());
-//        fragmentList.add(new HuanBaoFragment());
-//        fragmentList.add(new NewsFragment());
-//        fragmentList.add(new ZhongXinFragment());
-//        //这句话总是忘写
-//        mainAdapter = new MainAdapter(getSupportFragmentManager(), fragmentList);
-//        initView();
-//        shouyeRb.setChecked(true);
-//        shouyeRb.setBackgroundColor(Color.parseColor("#58B39D"));
-//        viewPager.setOffscreenPageLimit(fragmentList.size());
-//        Log.d("测试", "onStart");
-//    }
 
     private void initView() {
         viewPager = findViewById(R.id.main_vp);

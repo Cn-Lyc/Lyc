@@ -139,10 +139,7 @@ public class ParkingMainActiviiy extends AppCompatActivity {
             String pkRates = rowsDTOList1.get(i).getRates() + " 元/时";
             String pkDistance = rowsDTOList1.get(i).getDistance();
             rowsDTOList.add(new BaseParkingBean.RowsDTO(pkName, pkVan, pkAddress, pkRates, pkDistance));
-//            if (rowsDTOList.size() > 5) {
-//                order(0);
-//                break;
-//            }
+
             order(0);
         }
         runOnUiThread(new Runnable() {

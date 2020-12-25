@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.skilltrain.AllServiceFragment;
 import com.example.skilltrain.HuanBaoFragment;
@@ -18,24 +20,31 @@ import com.example.skilltrain.ZhongXinFragment;
 
 import java.util.List;
 
-public class MainAdapter extends FragmentPagerAdapter {
+public class MainAdapter extends FragmentStatePagerAdapter {
     List<Fragment> fragmentList;
+    FragmentManager fragmentManager;
 
 //    @Override
 //    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
 //
 //    }
 
-    public MainAdapter(FragmentManager fragmentManager, List<Fragment> fragmentList){
+    public MainAdapter(FragmentManager fragmentManager, List<Fragment> fragmentList) {
         super(fragmentManager);
         this.fragmentList = fragmentList;
+        this.fragmentManager = fragmentManager;
     }
 
 
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return PagerAdapter.POSITION_NONE;
+    }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
+
         return fragmentList.get(position);
     }
 

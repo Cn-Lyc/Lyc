@@ -105,7 +105,9 @@ public class MainFragment extends Fragment {
 
                         break;
                     case 1:
-
+                        Intent intent1 = new Intent(getActivity(), BusInfoActivity.class);
+                        startActivity(intent1);
+                        getActivity().finish();
                         break;
                     case 2:
 
