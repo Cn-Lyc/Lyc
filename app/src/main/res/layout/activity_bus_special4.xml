@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".BusSpecialActivity3">
+    tools:context=".BusSpecialActivity4">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,13 +16,13 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text="第三步"
+            android:text="第四步"
             android:textColor="#000"
             android:textSize="20dp" />
 
 
         <TextView
-            android:id="@+id/busSpBackTv3"
+            android:id="@+id/busSpBackTv4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -31,16 +31,6 @@
             android:textColor="#000"
             android:textSize="20dp" />
 
-
-        <TextView
-            android:id="@+id/busSpNextTv3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:text="下一步"
-            android:textColor="#000"
-            android:textSize="20dp" />
 
     </RelativeLayout>
 
@@ -58,12 +48,78 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="起        点:"
+            android:text="乘客姓名:"
             android:textColor="#000"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/busSpFirstTv3"
+            android:id="@+id/busSpUserNameTv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="起点:"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号码:"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/busSpUserNumTv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="起点:"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上车时间:"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/busSpTimeTv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="起点:"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上车地点:"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/busSpInBusTv4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="起点:"
@@ -81,127 +137,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="终        点:"
+            android:text="下车地点:"
             android:textColor="#000"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/busSpEndTv3"
+            android:id="@+id/busSpOutBusTv4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="终点:"
+            android:text="起点:"
             android:textColor="#000"
             android:textSize="15dp" />
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="乘客姓名:"
-            android:textColor="#000"
-            android:textSize="20dp" />
-
-        <EditText
-            android:id="@+id/busUserNameEt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/ed_bg"
-            android:hint="请输入乘客姓名"
-            android:padding="3dp" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="手机号码:"
-            android:textColor="#000"
-            android:textSize="20dp" />
-
-        <EditText
-            android:id="@+id/busUserNumEt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/ed_bg"
-            android:hint="请输入手机号码"
-            android:padding="3dp" />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/busSubMitBtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="上车地点:"
-            android:textColor="#000"
-            android:textSize="20dp" />
-
-
-        <EditText
-            android:id="@+id/inBusEt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/ed_bg"
-            android:hint="请输入上车地点"
-            android:padding="3dp" />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="下车地点:"
-            android:textColor="#000"
-            android:textSize="20dp" />
-
-
-        <EditText
-            android:id="@+id/outBusEt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/ed_bg"
-            android:hint="请输入下车地点"
-            android:padding="3dp" />
-
-
-    </LinearLayout>
-
+        android:layout_marginTop="20dp"
+        android:text="提交订单" />
 
 </LinearLayout>

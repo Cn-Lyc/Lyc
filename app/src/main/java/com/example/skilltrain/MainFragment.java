@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.skilltrain.adapter.MainAdapter;
 import com.example.skilltrain.adapter.NewsAdapter2;
@@ -62,6 +63,7 @@ public class MainFragment extends Fragment {
     List<MainNewsBean.RowsDTO> rowsDTOList;
     NewsAdapter2 newsAdapter2;
     ListView mainNewsLv;
+    public static String token;
 
     @Nullable
     @Override
@@ -113,7 +115,9 @@ public class MainFragment extends Fragment {
 
                         break;
                     case 3:
-
+                        Intent intent3 = new Intent(getActivity(), ShengHuoJiaoFeiActivity.class);
+                        startActivity(intent3);
+                        getActivity().finish();
                         break;
                     case 4:
 
@@ -202,7 +206,7 @@ public class MainFragment extends Fragment {
 
         try {
             JSONObject jsonObject = new JSONObject(json);
-            String token = jsonObject.getString("token");
+            token = jsonObject.getString("token");
             String msg = jsonObject.getString("msg");
             Log.d("TAG", "令牌 " + token);
         } catch (JSONException e) {
@@ -273,9 +277,21 @@ public class MainFragment extends Fragment {
                         intent.putStringArrayListExtra("title", title1);
                         intent.putStringArrayListExtra("content", content1);
                         intent.putStringArrayListExtra("imgUrl", imgUrl1);
+                    } else {
+                        title1.add("没有搜索相关的新闻");
+                        content1.add("没有搜索相关的新闻");
+                        imgUrl1.add("");
+                        intent = new Intent(getActivity(), NewsActivity.class);
+
+                        intent.putStringArrayListExtra("title", title1);
+                        intent.putStringArrayListExtra("content", content1);
+                        intent.putStringArrayListExtra("imgUrl", imgUrl1);
+                        //跳出当前循环，只显示一个
+                        break;
                     }
                 }
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
@@ -286,7 +302,7 @@ public class MainFragment extends Fragment {
         HttpUtil.Get("http://dasai.sdvcst.edu.cn:8080/press/press/list", new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
+                Log.d("TAG", "解析不对劲");
             }
 
             @Override

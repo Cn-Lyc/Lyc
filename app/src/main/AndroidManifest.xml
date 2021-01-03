@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SkillTrain">
-        <activity android:name=".BusSpecialActivity3"></activity>
+        <activity android:name=".ShengHuoGroupManager"></activity>
+        <activity android:name=".ShengHuoJiaoFeiActivity" />
+        <activity android:name=".BusSpecialActivity4" />
+        <activity android:name=".BusSpecialActivity3" />
         <activity android:name=".BusSpecialActivity2" />
         <activity android:name=".BusSpecialActivity" />
         <activity android:name=".BusInfoActivity" />

@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     ViewPager viewPager;
     RadioGroup mainRg;
     RadioButton shouyeRb, quanbuRb, huanbaoRb, xinwenRb, zhongxinRb;
-
+    public static  Context context;
     MainAdapter mainAdapter;
     public static List<Fragment> fragmentList;
 

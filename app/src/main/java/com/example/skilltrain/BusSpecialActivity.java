@@ -33,7 +33,8 @@ public class BusSpecialActivity extends AppCompatActivity {
     List<BusInfoBean.RowsDTO> rowsDTOList;
     String busId;
     TextView backTv, nextTv;
-    String putFirst, putEnd;
+    String putFirst, putEnd, path;
+    String infoPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,8 @@ public class BusSpecialActivity extends AppCompatActivity {
                 intent1.putExtra("first", putFirst);
                 intent1.putExtra("end", putEnd);
                 intent1.putExtra("busId", busId);
+                intent1.putExtra("price", infoPrice);
+                intent1.putExtra("path",path);
                 startActivity(intent1);
                 finish();
             }
@@ -108,13 +111,16 @@ public class BusSpecialActivity extends AppCompatActivity {
             String infoFirst = rowsDTOList1.get(i).getFirst();
             String infoEnd = rowsDTOList1.get(i).getEnd();
             String infoStartTime = rowsDTOList1.get(i).getStartTime();
-            String infoPrice = rowsDTOList1.get(i).getPrice();
+            String infoPrice1 = rowsDTOList1.get(i).getPrice();
             String infoMile = rowsDTOList1.get(i).getMileage();
 
             if (rowsDTOList1.get(i).getId().equals(busId)) {
-                rowsDTOList.add(new BusInfoBean.RowsDTO(infoName, infoFirst, infoEnd, infoStartTime, infoPrice, infoMile));
+                rowsDTOList.add(new BusInfoBean.RowsDTO(infoName, infoFirst, infoEnd, infoStartTime, infoPrice1, infoMile));
                 putFirst = infoFirst;
+                infoPrice = infoPrice1;
+                path = infoName;
                 putEnd = infoEnd;
+                Log.d("TAG1", "getBusInfo: "+path);
             }
 
         }

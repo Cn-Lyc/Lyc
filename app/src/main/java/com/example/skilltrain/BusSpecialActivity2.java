@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class BusSpecialActivity2 extends AppCompatActivity {
     CalendarView calendarView;
     TextView backTv, nextTv;
-    String time, first, end, busId;
+    String time, first, end, busId, price, path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,9 @@ public class BusSpecialActivity2 extends AppCompatActivity {
         first = intentGet.getStringExtra("first");
         end = intentGet.getStringExtra("end");
         busId = intentGet.getStringExtra("busId");
-        Log.d("TAG2", "onCreate: " + first + end);
+        price = intentGet.getStringExtra("price");
+        path = intentGet.getStringExtra("path");
+        Log.d("TAG2", "onCreate: " + path);
 
 
     }
@@ -55,7 +57,9 @@ public class BusSpecialActivity2 extends AppCompatActivity {
                 intent1.putExtra("time", time);
                 intent1.putExtra("first", first);
                 intent1.putExtra("end", end);
-
+                intent1.putExtra("busId", busId);
+                intent1.putExtra("price", price);
+                intent1.putExtra("path", path);
                 startActivity(intent1);
                 finish();
             }
@@ -66,7 +70,6 @@ public class BusSpecialActivity2 extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 i1 = i1 + 1;
                 time = i + "年" + i1 + "月" + i2 + "日";
-                Toast.makeText(BusSpecialActivity2.this, time, Toast.LENGTH_SHORT).show();
                 nextTv.setVisibility(View.VISIBLE);
             }
         });

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="group">
+        <item>我家</item>
+        <item>父母</item>
+        <item>房东</item>
+        <item>朋友</item>
+        <item>自定义</item>
+    </string-array>
+
+
+</resources>
