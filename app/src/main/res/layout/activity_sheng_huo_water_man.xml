@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ShengHuoGroupManager">
+    tools:context=".ShengHuoWaterManActivity">
 
 
     <RelativeLayout
@@ -18,27 +18,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:gravity="center"
-            android:text="户号管理"
-
+            android:text="水费管理"
             android:textColor="#000"
             android:textSize="20dp" />
 
 
         <TextView
-            android:id="@+id/lifeAddGroupTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/tv_bg"
-            android:gravity="center"
-            android:padding="1dp"
-            android:text="新增分组 "
-            android:textColor="#000"
-            android:textSize="20dp" />
-
-
-        <TextView
-            android:id="@+id/lifeAddGroupBackTv"
+            android:id="@+id/lifeWaterBackTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -50,7 +36,36 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/lifeLineTv1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@id/lifeR1"
+        android:layout_marginTop="3dp"
+        android:background="#000" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/water" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="暂无欠费"
+            android:textColor="#000"
+            android:textSize="30dp" />
+
+
+    </LinearLayout>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignBottom="@id/lifeR1"
@@ -59,7 +74,7 @@
 
 
     <ListView
-        android:id="@+id/groupLv"
+        android:id="@+id/waterLv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

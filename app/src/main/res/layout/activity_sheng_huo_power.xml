@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ShengHuoGroupManager">
-
+    tools:context=".ShengHuoPowerActivity">
 
     <RelativeLayout
         android:id="@+id/lifeR1"
@@ -18,27 +17,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:gravity="center"
-            android:text="户号管理"
-
+            android:text="电费管理"
             android:textColor="#000"
             android:textSize="20dp" />
 
 
         <TextView
-            android:id="@+id/lifeAddGroupTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/tv_bg"
-            android:gravity="center"
-            android:padding="1dp"
-            android:text="新增分组 "
-            android:textColor="#000"
-            android:textSize="20dp" />
-
-
-        <TextView
-            android:id="@+id/lifeAddGroupBackTv"
+            android:id="@+id/lifePowerBackTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -50,17 +35,17 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/lifeLineTv1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignBottom="@id/lifeR1"
-        android:layout_marginTop="3dp"
         android:background="#000" />
 
 
+
     <ListView
-        android:id="@+id/groupLv"
+        android:id="@+id/powerLv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
 </LinearLayout>

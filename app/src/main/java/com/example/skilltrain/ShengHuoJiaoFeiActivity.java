@@ -17,6 +17,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import java.util.List;
 public class ShengHuoJiaoFeiActivity extends AppCompatActivity {
     TextView backTv, cityTv, waterTv, powerTv, groupTv;
     String latLongString;
+    Button groupBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,33 @@ public class ShengHuoJiaoFeiActivity extends AppCompatActivity {
             }
         });
 
+        waterTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShengHuoJiaoFeiActivity.this, ShengHuoWaterManActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        groupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShengHuoJiaoFeiActivity.this, ShengHuoGroupManager.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        powerTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShengHuoJiaoFeiActivity.this, ShengHuoPowerActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     private void initView() {
@@ -70,6 +99,7 @@ public class ShengHuoJiaoFeiActivity extends AppCompatActivity {
         waterTv = findViewById(R.id.waterManTv);
         powerTv = findViewById(R.id.powerManTv);
         groupTv = findViewById(R.id.groupManTv);
+        groupBtn = findViewById(R.id.lifeGroupBt);
     }
 
 

@@ -57,5 +57,14 @@ public class HttpUtil {
 
     }
 
+    public static void GetHeader(String url, String token, Callback callback) {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .addHeader("Authorization", token)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
 
 }
