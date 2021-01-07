@@ -1,55 +1,30 @@
 package com.example.skilltrain;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridLayout;
-import android.widget.GridView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-
 import com.example.skilltrain.adapter.MainAdapter;
-import com.example.skilltrain.adapter.TuBiaoAdapter;
-import com.example.skilltrain.bean.TuBiaoBean;
-import com.example.skilltrain.bean.ZhaunTiNewsBean;
-import com.example.skilltrain.util.GlideImgUtil;
-import com.example.skilltrain.util.HttpUtil;
-import com.google.gson.Gson;
-import com.youth.banner.Banner;
 
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-
-public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
+public class MainActivity2 extends AppCompatActivity implements ViewPager.OnPageChangeListener, RadioGroup.OnCheckedChangeListener {
     public static ViewPager viewPager;
     RadioGroup mainRg;
     RadioButton shouyeRb, quanbuRb, huanbaoRb, xinwenRb, zhongxinRb;
     public static Context context;
     public static MainAdapter mainAdapter;
     public static List<Fragment> fragmentList;
-    int tuichu;
+    int zhongxin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +32,15 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
-        tuichu = intent.getIntExtra("tuichu", 0);
+        zhongxin = intent.getIntExtra("zhongxin", 4);
+        Log.d("中心跳转值", "onCreate: "+zhongxin);
 
         fragmentList = new ArrayList<>();
         fragmentList.add(new MainFragment());
         fragmentList.add(new AllServiceFragment());
         fragmentList.add(new HuanBaoFragment());
         fragmentList.add(new NewsFragment());
-        fragmentList.add(new ZhongXinLoFragment());
+        fragmentList.add(new ZhongXinLoFragment2());
 
 
         //这句话总是忘写
@@ -89,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         shouyeRb.setChecked(true);
         shouyeRb.setBackgroundColor(Color.parseColor("#58B39D"));
         viewPager.setOffscreenPageLimit(fragmentList.size());
-        viewPager.setCurrentItem(tuichu);
+        viewPager.setCurrentItem(zhongxin);
         Log.d("测试", "onCreate");
     }
 

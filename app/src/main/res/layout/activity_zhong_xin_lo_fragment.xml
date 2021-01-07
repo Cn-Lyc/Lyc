@@ -6,46 +6,57 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
+    android:background="#d3d3d3"
     android:orientation="vertical"
-    tools:context=".adapter.ZhongXinLoFragment">
+    tools:context=".ZhongXinLoFragment">
 
-    <EditText
-        android:id="@+id/name_et"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_toLeftOf="@id/name_et"
-        android:background="@drawable/edit_bg"
         android:gravity="center"
-        android:hint="请输入账号"
-        android:imeOptions="actionNext"
-        android:inputType="text"
-        android:lines="1"
-        android:nextFocusDown="@id/pwd_et" />
+        android:id="@+id/zhongxinL1"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/pwd_et"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30sp"
-        android:layout_toLeftOf="@id/pwd_et"
-        android:background="@drawable/edit_bg"
-        android:gravity="center"
-        android:hint="请输入密码"
-        android:inputType="textPassword"
-        android:lines="1"
-        android:nextFocusDown="@id/login_btn" />
+        <EditText
+            android:id="@+id/name_et"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_toLeftOf="@id/name_et"
+            android:background="@drawable/edit_bg"
+            android:gravity="center"
+            android:hint="请输入账号"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:lines="1"
+            android:nextFocusDown="@id/pwd_et" />
+
+        <EditText
+            android:id="@+id/pwd_et"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30sp"
+            android:layout_toLeftOf="@id/pwd_et"
+            android:background="@drawable/edit_bg"
+            android:gravity="center"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:nextFocusDown="@id/login_btn" />
 
 
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="登录" />
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="登录" />
+    </LinearLayout>
+
 
 </LinearLayout>
