@@ -261,7 +261,7 @@ public class MainFragment extends Fragment {
                 for (ZhaunTiNewsBean.RowsDTO rowsDTO : rowsDTOList) {
                     title = rowsDTO.getTitle();
                     content = rowsDTO.getContent();
-                    //获取到的imgurl是不带前面的http的，要自己加
+                    //获取到的imgurl是不带前面的http的，要自己加,也可以写在适配器里
                     imgUrl = " http://dasai.sdvcst.edu.cn:8080" + rowsDTO.getImgUrl();
                     Log.d("TAG", "url" + imgUrl);
                     /* 此处犯了一个很严重的错误，不应该用search来包含title和content
@@ -276,20 +276,21 @@ public class MainFragment extends Fragment {
                         //这边要传一个列表数据过去，因为有可能有多个新闻
                         intent.putStringArrayListExtra("title", title1);
                         intent.putStringArrayListExtra("content", content1);
-                        intent.putStringArrayListExtra("imgUrl", imgUrl1);
-                    } else {
-                        title1.add("没有搜索相关的新闻");
-                        content1.add("没有搜索相关的新闻");
-                        imgUrl1.add("");
-                        intent = new Intent(getActivity(), NewsActivity.class);
-
-                        intent.putStringArrayListExtra("title", title1);
-                        intent.putStringArrayListExtra("content", content1);
-                        intent.putStringArrayListExtra("imgUrl", imgUrl1);
-                        //跳出当前循环，只显示一个
-                        break;
-                    }
+                        intent.putStringArrayListExtra("imgUrl", imgUrl1);}
+//                    } else {
+//                        title1.add("没有搜索相关的新闻");
+//                        content1.add("没有搜索相关的新闻");
+//                        imgUrl1.add("");
+//                        intent = new Intent(getActivity(), NewsActivity.class);
+//
+//                        intent.putStringArrayListExtra("title", title1);
+//                        intent.putStringArrayListExtra("content", content1);
+//                        intent.putStringArrayListExtra("imgUrl", imgUrl1);
+//                        //跳出当前循环，只显示一个
+//                        break;
+//                    }
                 }
+
                 startActivity(intent);
                 getActivity().finish();
             }

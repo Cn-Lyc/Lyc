@@ -54,7 +54,8 @@ public class ParkingMainActiviiy extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView textView = view.findViewById(R.id.parkingNameTv);
-                String name = textView.getText().toString();
+                String name = rowsDTOList.get(i).getParkName();
+                //  String name = textView.getText().toString();
                 Intent intent = new Intent(ParkingMainActiviiy.this, ParkingXiangQingActivity.class);
                 intent.putExtra("name", name);
                 startActivity(intent);
